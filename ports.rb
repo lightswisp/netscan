@@ -3,7 +3,7 @@ require "socket"
 require "timeout"
 
 class PortScanner
-	def initialize(range, output)
+	def initialize(range)
 		@ports_map = {
 			80 => "http/80",
 			443 => "https/443",
@@ -20,11 +20,9 @@ class PortScanner
 			
 		}
 		@range = range
-		@output = output
 		@ips = range.size
 		@port_threads = []
 		@ports_open = {}
-		puts "Scanning with -O option!" if @output
 	end
 
 	def start()

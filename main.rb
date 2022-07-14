@@ -15,7 +15,6 @@ def main()
 	range_valid = [] #valid ip adresses 
 	mask 	    = ARGV[0]  # ip mask 
 	scan_ports  = ARGV.include?("-P")
-	output_info = ARGV.include?("-O")
 	
 	begin
 		range = IPAddr.new(mask).to_range.to_s.split("..")
@@ -41,7 +40,7 @@ def main()
 
 	if(scan_ports)
 		puts "\e[37mScanning ports for #{range_valid.size} ip addreses..."
-		p = PortScanner.new(range_valid, output_info)
+		p = PortScanner.new(range_valid)
 		p.start()
 	end
 end
